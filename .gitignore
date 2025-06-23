@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# SQLite Database
+db.sqlite3
+
+# Env (virtual environment)
+env/
+.venv/
+ENV/
+
+# Media files (uploaded files)
+media/
+
+# VSCode or PyCharm
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Django specific
+*.log
+staticfiles/
+
+# Env var config
+.env

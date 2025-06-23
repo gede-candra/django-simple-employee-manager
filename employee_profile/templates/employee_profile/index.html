@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Profil Karyawan{% endblock %}
+
+{% block content %}
+<div class=" mx-auto bg-white p-6 rounded-xl shadow-md">
+    {% if employee %}
+        <div class="flex flex-col items-center md:flex-row md:items-start md:gap-4">
+        <!-- Avatar -->
+        <div class="flex-shrink-0">
+            <img src="https://cdn-icons-png.flaticon.com/512/2922/2922561.png" alt="Profile"
+                 class="w-32 h-32 rounded-full object-cover shadow">
+        </div>
+
+        <!-- Profile Info -->
+        <div class="flex-1 mt-6 md:mt-0 w-full">
+            <h1 class="text-2xl font-bold text-center md:text-left mb-6">{{ employee.name|default:"Leni Enix" }}</h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm text-gray-800">
+                <div>
+                    <label class="block font-semibold">ID Employee</label>
+                    <div class="bg-gray-100 p-2 rounded">{{ employee.id_employee }}</div>
+                </div>
+                <div>
+                    <label class="block font-semibold">Job Level</label>
+                    <div class="bg-gray-100 p-2 rounded">{{ employee.job_level }}</div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold">Departement</label>
+                    <div class="bg-gray-100 p-2 rounded">{{ employee.department }}</div>
+                </div>
+                <div>
+                    <label class="block font-semibold">Employment Status</label>
+                    <div class="bg-gray-100 p-2 rounded">{{ employee.employment_status }}</div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold">Job Position</label>
+                    <div class="bg-gray-100 p-2 rounded">{{ employee.job_position }}</div>
+                </div>
+                <div>
+                    <label class="block font-semibold">End Date</label>
+                    <div class="bg-gray-100 p-2 rounded">
+                        {{ employee.end_date|date:"j M Y" }}
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold">Join Date</label>
+                    <div class="bg-gray-100 p-2 rounded">
+                        {{ employee.join_date|date:"j M Y" }}
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-semibold">Day Payment</label>
+                    <div class="bg-gray-100 p-2 rounded">
+                        Rp{{ employee.day_payment|floatformat:0 }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <p class="text-red-500 text-center">Data karyawan tidak ditemukan.</p>
+        <hr class="my-6">
+        <h2 class="text-xl font-semibold mb-2">Tambah Karyawan Baru</h2>
+        <form method="POST" class="space-y-4 ">
+            {% csrf_token %}
+            <div>
+                <label>ID Employee:</label>
+                <input type="text" name="id_employee" class="w-full border p-2 rounded" required>
+            </div>
+            <div>
+                <label>Name:</label>
+                <input type="text" name="name" class="w-full border p-2 rounded" required>
+            </div>
+            <div>
+                <label>Departemen:</label>
+                <input type="text" name="department" class="w-full border p-2 rounded" required>
+            </div>
+            <div>
+                <label>Posisi:</label>
+                <input type="text" name="job_position" class="w-full border p-2 rounded" required>
+            </div>
+            <div>
+                <label>Tanggal Masuk:</label>
+                <input type="date" name="join_date" class="w-full border p-2 rounded" required>
+            </div>
+            <div>
+                <label>Gaji Harian:</label>
+                <input type="number" name="day_payment" class="w-full border p-2 rounded" required>
+            </div>
+            <div>
+                <label>Level:</label>
+                <input type="text" name="job_level" class="w-full border p-2 rounded">
+            </div>
+            <div>
+                <label>Status:</label>
+                <input type="text" name="employment_status" class="w-full border p-2 rounded">
+            </div>
+            <div>
+                <label>Tanggal Berakhir (opsional):</label>
+                <input type="date" name="end_date" class="w-full border p-2 rounded">
+            </div>
+        
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                Simpan
+            </button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

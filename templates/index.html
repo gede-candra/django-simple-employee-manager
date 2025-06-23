@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Simple Employee Manager{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 py-10">
+    <div class="text-center mb-10">
+        <h1 class="text-4xl font-bold text-gray-800 mb-3">👋 Welcome to Simple Employee Manager</h1>
+        <p class="text-gray-600 text-lg">Manage your team's career, contracts, and certifications in one place — effortlessly.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 shadow-md rounded-lg text-center">
+            <div class="text-blue-500 text-4xl mb-3">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Career History</h3>
+            <p class="text-sm text-gray-600 mb-4">Track promotions, roles, and employee growth over time.</p>
+            <a href="{% url 'career_list' %}" class="text-blue-600 font-medium hover:underline">View Careers →</a>
+        </div>
+
+        <div class="bg-white p-6 shadow-md rounded-lg text-center">
+            <div class="text-green-500 text-4xl mb-3">
+                <i class="fas fa-file-contract"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Contracts</h3>
+            <p class="text-sm text-gray-600 mb-4">Manage contract documents and validity periods with ease.</p>
+            <a href="{% url 'contract_list' %}" class="text-green-600 font-medium hover:underline">Manage Contracts →</a>
+        </div>
+
+        <div class="bg-white p-6 shadow-md rounded-lg text-center">
+            <div class="text-yellow-500 text-4xl mb-3">
+                <i class="fas fa-certificate"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Certifications</h3>
+            <p class="text-sm text-gray-600 mb-4">Keep a record of employee certifications and renewals.</p>
+            <a href="{% url 'certification_list' %}" class="text-yellow-600 font-medium hover:underline">View Certifications →</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
